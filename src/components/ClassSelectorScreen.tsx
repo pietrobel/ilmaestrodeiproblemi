@@ -18,11 +18,11 @@ export function ClassSelectorScreen({
         {/* Intestazione editoriale pulita con collegamento a ScienzaLab */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 mb-8 border-b border-slate-200">
           <div>
-            <span className="font-display text-xl font-bold tracking-tight text-slate-900">
-              LogicaMente
+            <span className="font-display text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
+              Il Maestro dei Problemi
             </span>
             <span className="text-xs sm:text-sm text-slate-500 block sm:inline sm:ml-3">
-              Ambiente di problem solving matematico · Senza registrazione
+              Ambiente di problem solving matematico · Dalla 4ª primaria alla 3ª media
             </span>
           </div>
 
@@ -39,41 +39,115 @@ export function ClassSelectorScreen({
           </a>
         </div>
 
-        {/* Hero Split a 2 colonne bilanciate */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-12">
+        {/* Hero Split a 2 colonne con il Maestro dei Problemi in primo piano */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-10">
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <p className="text-sm font-medium text-sky-700 mb-3">
-              Percorso verticale · Scuola Primaria e Secondaria di Primo Grado
+            <p className="text-sm font-semibold text-sky-700 mb-2">
+              Benvenuto nella scuola di logica del Maestro
             </p>
             <h1 className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-slate-900 leading-[1.15] text-balance mb-4">
               Impara a comprendere, rappresentare e risolvere i problemi matematici
             </h1>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mb-6">
-              Seleziona la tua classe per adattare automaticamente argomenti, complessità dei testi,
-              rappresentazioni visive, vocabolario matematico, suggerimenti graduali e correzione ragionata
-              degli errori. Potrai cambiare classe in qualsiasi momento dalle impostazioni conservando tutti i progressi.
+              Insieme al <strong>Maestro dei Problemi</strong> scoprirai che ogni testo è una storia da esplorare.
+              Seleziona la tua classe per accedere a spiegazioni guidate con schemi a barre, tavolette delle frazioni,
+              laboratori visivi, sfide veloci e una correzione intelligente che ti aiuta a capire il perché di ogni passaggio.
             </p>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs sm:text-sm text-slate-500">
-              <span>Spiegazioni guidate</span>
+              <span>5 classi calibrate</span>
               <span aria-hidden="true">·</span>
-              <span>Schemi a barre e segmenti</span>
+              <span>Schemi a barre e bilance</span>
               <span aria-hidden="true">·</span>
-              <span>Diagnosi degli errori</span>
+              <span>Diagnosi guidata errori</span>
               <span aria-hidden="true">·</span>
-              <span>Missioni reali</span>
+              <span>Sfide e giochi flash</span>
               <span aria-hidden="true">·</span>
               <span>Adatto a PC, tablet e LIM</span>
             </div>
           </div>
 
-          <div className="lg:col-span-5">
-            <div className="h-full min-h-[240px] rounded-xl overflow-hidden border border-slate-200 bg-white">
+          <div className="lg:col-span-5 flex flex-col">
+            <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-xs group">
+              <SafeImage
+                imageKey="maestro"
+                alt="Il Maestro dei Problemi nel suo laboratorio di matematica e logica con lavagna di modelli e figure"
+                fallbackTitle="Il Maestro dei Problemi"
+                className="w-full h-[320px] sm:h-[360px] object-cover object-top"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/85 via-slate-900/60 to-transparent p-5 text-white">
+                <p className="text-xs font-semibold text-sky-300 uppercase tracking-wider mb-1">
+                  Il Maestro dei Problemi
+                </p>
+                <p className="text-sm italic font-medium leading-snug">
+                  «Nessun problema è un muro: con il giusto schema visivo diventa una scala per salire in alto!»
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Vetrina fotografica dei laboratori e strumenti */}
+        <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col">
+            <div className="h-36 overflow-hidden">
+              <SafeImage
+                imageKey="laboratorioVisivo"
+                alt="Laboratorio visivo con bilancia a bracci e solidi geometrici"
+                fallbackTitle="Laboratorio Visivo"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="p-4 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="font-display text-sm font-bold text-slate-900">
+                  Laboratorio Manipolativo
+                </h3>
+                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                  Barrette di calcolo, tavolette di frazioni, perimetri e bilance delle equazioni per vedere la matematica.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col">
+            <div className="h-36 overflow-hidden">
+              <SafeImage
+                imageKey="giochiSfide"
+                alt="Tavolo delle sfide logiche con clessidra, blocchi e lente d'ingrandimento"
+                fallbackTitle="Sfide e Giochi Flash"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="p-4 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="font-display text-sm font-bold text-slate-900">
+                  Palestra Giochi & Sfide
+                </h3>
+                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                  Caccia al dato superfluo, parole-numero nascoste e operazioni al volo per allenare il colpo d'occhio.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col">
+            <div className="h-36 overflow-hidden">
               <SafeImage
                 imageKey="heroWorkshop"
-                alt="Tavolo di studio con solidi geometrici in legno, compasso e quaderno a quadretti con disegni matematici"
-                fallbackTitle="Laboratorio di Problem Solving"
-                className="w-full h-full lg:h-full object-cover"
+                alt="Quaderno a quadretti e strumenti di disegno geometrico"
+                fallbackTitle="Officina dei Problemi"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
+            </div>
+            <div className="p-4 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="font-display text-sm font-bold text-slate-900">
+                  Officina di Risoluzione
+                </h3>
+                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                  Problemi contestualizzati a passaggi guidati, foglio a quadretti e diagnosi intelligente degli errori.
+                </p>
+              </div>
             </div>
           </div>
         </section>

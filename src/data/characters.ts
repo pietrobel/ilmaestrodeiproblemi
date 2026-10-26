@@ -2,6 +2,29 @@ import { GradeId, type CharacterMascot } from '../types/math';
 
 export const CHARACTERS: CharacterMascot[] = [
   {
+    id: 'maestro',
+    name: 'Il Maestro dei Problemi',
+    species: 'Maestro di Matematica e Logica',
+    role: 'Mentore e Guida del Percorso',
+    greeting: 'Benvenuto nel mio laboratorio! Pronto a scoprire il segreto di ogni problema matematico?',
+    catchphrase: 'Nessun problema è un muro: con la logica diventa una scala per salire più in alto!',
+    badgeTitle: 'Sigillo del Maestro',
+    accentColor: '#0369A1',
+    gradeIds: [
+      GradeId.QuartaPrimaria,
+      GradeId.QuintaPrimaria,
+      GradeId.PrimaMedia,
+      GradeId.SecondaMedia,
+      GradeId.TerzaMedia,
+    ],
+    tips: [
+      'Un problema è come un racconto con una sorpresa finale: prima immagina la scena, poi cerca la domanda!',
+      'Non avere mai fretta di fare i calcoli: chi disegna uno schema o una barretta ha già risolto a metà.',
+      'Sbagliare è la parte più bella dell’imparare: ogni tentativo ci insegna quale strada scartare!',
+      'Prima di confermare il risultato, chiediti sempre: «Ha senso nella vita reale?»',
+    ],
+  },
+  {
     id: 'pico',
     name: 'Pico la Civetta',
     species: 'Civetta Detective',
@@ -92,9 +115,6 @@ export function getMascotsForGrade(gradeId: GradeId): CharacterMascot[] {
   return CHARACTERS.filter((c) => c.gradeIds.includes(gradeId));
 }
 
-export function getDefaultMascotForGrade(gradeId: GradeId): CharacterMascot {
-  if (gradeId === GradeId.QuartaPrimaria || gradeId === GradeId.QuintaPrimaria) {
-    return CHARACTERS[0]; // Pico
-  }
-  return CHARACTERS[3]; // Archi
+export function getDefaultMascotForGrade(_gradeId: GradeId): CharacterMascot {
+  return CHARACTERS[0]; // Il Maestro dei Problemi
 }

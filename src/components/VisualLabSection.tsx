@@ -3,6 +3,7 @@ import { RotateCcw } from 'lucide-react';
 import { getGradeProfile } from '../data/grades';
 import { GradeId } from '../types/math';
 import { formatItNumber } from '../utils/mathEvaluator';
+import { SafeImage } from './SafeImage';
 
 interface VisualLabSectionProps {
   gradeId: GradeId;
@@ -134,38 +135,53 @@ export function VisualLabSection({ gradeId }: VisualLabSectionProps) {
 
   return (
     <div className="space-y-6">
-      {/* Intestazione del Laboratorio + Selettore Schede della Classe */}
-      <section className="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-          <div>
-            <p className="text-xs text-slate-500 mb-0.5">
-              Simulazioni visive manipolabili · {profile.buttonLabel}
-            </p>
-            <h1 className="font-display text-2xl font-bold text-slate-900">
-              Laboratorio Visivo Interattivo
-            </h1>
+      {/* Intestazione del Laboratorio con immagine e Selettore Schede */}
+      <section className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+          <div className="lg:col-span-8 p-6 sm:p-7 space-y-4 flex flex-col justify-between">
+            <div>
+              <p className="text-xs font-semibold text-sky-700 tracking-wide uppercase mb-1">
+                Laboratorio Manipolativo · {profile.buttonLabel}
+              </p>
+              <h1 className="font-display text-2xl sm:text-3xl font-bold text-slate-900">
+                Laboratorio Visivo del Maestro
+              </h1>
+              <p className="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed max-w-2xl">
+                Tocca i blocchi, sposta i cursori ed esplora come prendono forma grandezze,
+                proporzioni, perimetri e bilance matematiche in tempo reale.
+              </p>
+            </div>
+
+            {/* Tab specifici per la classe */}
+            <div
+              role="group"
+              aria-label="Scegli il modello della classe"
+              className="inline-flex items-center gap-1 p-1 bg-slate-100 rounded-lg overflow-x-auto max-w-full"
+            >
+              {currentTabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+                    activeTab === tab.id
+                      ? 'bg-white text-slate-900 shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Tab specifici per la classe */}
-          <div
-            role="group"
-            aria-label="Scegli il modello della classe"
-            className="inline-flex items-center gap-1 p-1 bg-slate-100 rounded-lg overflow-x-auto max-w-full"
-          >
-            {currentTabs.map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
-                  activeTab === tab.id
-                    ? 'bg-white text-slate-900 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+          <div className="lg:col-span-4 h-40 lg:h-auto min-h-[160px] overflow-hidden relative border-t lg:border-t-0 lg:border-l border-slate-200">
+            <SafeImage
+              imageKey="laboratorioVisivo"
+              alt="Bilancia a due piatti ed elementi geometrici in legno del laboratorio"
+              fallbackTitle="Laboratorio"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>

@@ -15,6 +15,7 @@ import { MINI_GAMES_BANK, getMiniGamesForGrade } from '../data/games';
 import { CHARACTERS, getMascotsForGrade, getDefaultMascotForGrade } from '../data/characters';
 import { getGradeProfile } from '../data/grades';
 import { CharacterCallout } from './CharacterCallout';
+import { SafeImage } from './SafeImage';
 
 interface GamesSectionProps {
   gradeId: GradeId;
@@ -280,19 +281,47 @@ export function GamesSection({
 
           {/* Colonna Laterale: Medaglie, Personaggi e Schede */}
           <div className="lg:col-span-4 space-y-6">
+            {/* Banner visivo della palestra di gioco */}
+            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+              <div className="h-36 overflow-hidden relative">
+                <SafeImage
+                  imageKey="giochiSfide"
+                  alt="Tavolo didattico con clessidra, frazioni a barre e lente"
+                  fallbackTitle="Palestra di Logica"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-3">
+                  <p className="text-white text-xs font-semibold">
+                    Palestra di Rapidità e Logica
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {/* Box Personaggio in primo piano */}
             <div className="bg-white border border-slate-200 rounded-xl p-5 space-y-4">
               <div className="flex items-center gap-3">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-white text-2xl font-bold shadow-xs shrink-0"
-                  style={{ backgroundColor: currentMascot.accentColor }}
-                >
-                  {currentMascot.id === 'pico' && '🦉'}
-                  {currentMascot.id === 'leo' && '🦫'}
-                  {currentMascot.id === 'zoe' && '🦊'}
-                  {currentMascot.id === 'archi' && '🐱‍🎓'}
-                  {currentMascot.id === 'maya' && '🐆'}
-                </div>
+                {currentMascot.id === 'maestro' ? (
+                  <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0 shadow-xs border border-sky-300">
+                    <SafeImage
+                      imageKey="maestro"
+                      alt="Il Maestro dei Problemi"
+                      fallbackTitle="Maestro"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center text-white text-2xl font-bold shadow-xs shrink-0"
+                    style={{ backgroundColor: currentMascot.accentColor }}
+                  >
+                    {currentMascot.id === 'pico' && '🦉'}
+                    {currentMascot.id === 'leo' && '🦫'}
+                    {currentMascot.id === 'zoe' && '🦊'}
+                    {currentMascot.id === 'archi' && '🐱‍🎓'}
+                    {currentMascot.id === 'maya' && '🐆'}
+                  </div>
+                )}
                 <div>
                   <h3 className="font-display text-base font-bold text-slate-900">
                     {currentMascot.name}
@@ -317,6 +346,7 @@ export function GamesSection({
                       className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 text-slate-700"
                     >
                       <span>
+                        {mascot.id === 'maestro' && '👨‍🏫'}
                         {mascot.id === 'pico' && '🦉'}
                         {mascot.id === 'leo' && '🦫'}
                         {mascot.id === 'zoe' && '🦊'}

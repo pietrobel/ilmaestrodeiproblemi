@@ -1,5 +1,6 @@
 import { Sparkles, HelpCircle, CheckCircle, AlertTriangle } from 'lucide-react';
 import type { CharacterMascot } from '../types/math';
+import { SafeImage } from './SafeImage';
 
 interface CharacterCalloutProps {
   mascot: CharacterMascot;
@@ -23,6 +24,20 @@ export function CharacterCallout({
   // Icone SVG stilizzate per i personaggi
   const renderMascotAvatar = () => {
     switch (mascot.id) {
+      case 'maestro':
+        return (
+          <div
+            className="w-12 h-12 rounded-full overflow-hidden shrink-0 shadow-xs border-2 border-sky-600 select-none bg-sky-100"
+            title="Il Maestro dei Problemi"
+          >
+            <SafeImage
+              imageKey="maestro"
+              alt="Il Maestro dei Problemi"
+              fallbackTitle="Maestro"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        );
       case 'pico':
         return (
           <div

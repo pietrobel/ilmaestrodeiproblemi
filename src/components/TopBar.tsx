@@ -28,9 +28,9 @@ export function TopBar({
         <button
           type="button"
           onClick={() => onNavigate(ActiveSection.Percorso)}
-          className="font-display text-lg font-bold tracking-tight text-slate-900 whitespace-nowrap shrink-0 cursor-pointer hover:text-sky-700 transition-colors"
+          className="font-display text-lg font-bold tracking-tight text-slate-900 whitespace-nowrap shrink-0 cursor-pointer hover:text-sky-700 transition-colors flex items-center gap-2"
         >
-          LogicaMente
+          <span>Il Maestro dei Problemi</span>
         </button>
 
         {/* Zone 2: Navigation links */}

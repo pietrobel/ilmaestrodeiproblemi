@@ -19,6 +19,7 @@ import {
   type GradeProgress,
 } from '../types/math';
 import { CHARACTERS, getMascotsForGrade } from '../data/characters';
+import { SafeImage } from './SafeImage';
 
 interface SettingsSectionProps {
   currentGradeId: GradeId;
@@ -146,7 +147,7 @@ export function SettingsSection({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {CHARACTERS.map((char) => {
             const isSelected =
               settings.selectedMascotId === char.id ||
@@ -159,7 +160,7 @@ export function SettingsSection({
                 key={char.id}
                 type="button"
                 onClick={() => onUpdateSettings({ selectedMascotId: char.id })}
-                className={`text-left p-4 rounded-xl border-2 transition-all cursor-pointer flex flex-col justify-between gap-3 ${
+                className={`text-left p-3.5 rounded-xl border-2 transition-all cursor-pointer flex flex-col justify-between gap-3 ${
                   isSelected
                     ? 'border-sky-600 bg-sky-50/70 shadow-xs'
                     : 'border-slate-200 hover:border-slate-300 bg-white'
@@ -167,7 +168,12 @@ export function SettingsSection({
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-2xl">
+                    <span className="text-2xl flex items-center">
+                      {char.id === 'maestro' && (
+                        <span className="w-8 h-8 rounded-full overflow-hidden border border-sky-400 inline-block shrink-0 shadow-2xs">
+                          <SafeImage imageKey="maestro" alt="Maestro" className="w-full h-full object-cover" />
+                        </span>
+                      )}
                       {char.id === 'pico' && '🦉'}
                       {char.id === 'leo' && '🦫'}
                       {char.id === 'zoe' && '🦊'}
@@ -175,7 +181,7 @@ export function SettingsSection({
                       {char.id === 'maya' && '🐆'}
                     </span>
                     {isSelected && (
-                      <span className="text-[11px] font-bold text-sky-800 bg-sky-100 px-2 py-0.5 rounded-full">
+                      <span className="text-[10px] font-bold text-sky-800 bg-sky-100 px-1.5 py-0.5 rounded-full">
                         Attivo
                       </span>
                     )}
