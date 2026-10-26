@@ -1,0 +1,6 @@
+{
+  "name": "LogicaMente — Problem Solving Matematico",
+  "description": "Ambiente di apprendimento interattivo in italiano per comprendere e risolvere problemi matematici dalla classe quarta primaria alla terza secondaria di primo grado.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
